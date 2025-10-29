@@ -21,7 +21,7 @@ RUN \
     echo "* hard nproc 65536" >> /etc/security/limits.conf
 
 # 安装Oracle JDK 8
-RUN wget https://gh-proxy.com/https://github.com/yinsel/oracle-jdk/releases/download/oracle-jdk/jdk-8u211-linux-x64.rpm -O /tmp/jdk-8u211-linux-x64.rpm && \
+RUN wget https://gh-proxy.com/https://github.com/yinsel/oracle-jdk/releases/download/oracle-jdk/jdk-8u211-linux-x64.rpm -O /tmp/jdk-8u211-linux-x64_bin.rpm && \
     rpm -ivh /tmp/jdk-8u211-linux-x64.rpm && \
     rm -f /tmp/jdk-8u211-linux-x64.rpm && \
     yum clean all && \
