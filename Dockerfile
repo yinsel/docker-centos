@@ -1,18 +1,11 @@
-FROM centos:7.9.2009
+FROM openanolis/anolisos:7.9-x86_64
 
 RUN \
-    # 更换为国内源并清理原有repo
-    SOURCE=https://mirrors.cloud.tencent.com/repo/centos7_base.repo && \
-    rm -rf /etc/yum.repos.d/* && \
-    curl $SOURCE -o /etc/yum.repos.d/CentOS-Base.repo && \
-    # 添加epel源
-    SOURCE=https://mirrors.cloud.tencent.com/repo/epel-7.repo && \
-    curl $SOURCE -o /etc/yum.repos.d/epel-7.repo && \
-    # 安装基础工具（仅保留必要组件）
-    yum install -y --setopt=install_weak_deps=false \
+    # 安装基础工具
+    yum install -y \
         wget curl git unzip \
         iproute bind-utils net-tools \
-        kde-l10n-Chinese glibc-common && \
+        kde-l10n-Chinese glibc-common freetype && \
     # 配置本地化
     localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 && \
     localedef -c -f GBK -i zh_CN zh_CN.gbk && \
